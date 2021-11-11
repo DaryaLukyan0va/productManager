@@ -9,9 +9,9 @@ import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.manager.ProductManager;
 
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.verify;
 
 public class ProductRepositoryTest {
     private ProductRepository repository = Mockito.mock(ProductRepository.class);
@@ -37,7 +37,7 @@ public class ProductRepositoryTest {
     }
 
     @Test
-    public void searchByManufacturer(){
+    public void searchByManufacturer() {
         Product[] actual = manager.searchBy("Apple");
         Product[] expected = new Product[]{fourth};
         assertArrayEquals(expected, actual);
@@ -58,7 +58,7 @@ public class ProductRepositoryTest {
     }
 
     @Test
-    public void OneResultByBookName() {
+    public void oneResultByBookName() {
         Product[] actual = manager.searchBy("Алиса");
         Product[] expected = new Product[]{first};
         assertArrayEquals(expected, actual);

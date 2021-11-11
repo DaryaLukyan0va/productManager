@@ -7,14 +7,23 @@ import ru.netology.repository.ProductRepository;
 
 public class ProductManager {
     private ProductRepository repository;
-    public ProductManager(ProductRepository repository) { this.repository = repository; }
-    public void add(Product item) { repository.save(item); }
-    public void deleteById(int id) { repository.removeById(id); }
+
+    public ProductManager(ProductRepository repository) {
+        this.repository = repository;
+    }
+
+    public void add(Product item) {
+        repository.save(item);
+    }
+
+    public void deleteById(int id) {
+        repository.removeById(id);
+    }
 
 
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
-        for (Product product: repository.findAll()) {
+        for (Product product : repository.findAll()) {
             if (matches(product, text)) {
                 Product[] tmp = new Product[result.length + 1];
                 System.arraycopy(result, 0, tmp, 0, result.length);
@@ -49,8 +58,6 @@ public class ProductManager {
         }
         return false;
     }
-
-
 
 
 }
